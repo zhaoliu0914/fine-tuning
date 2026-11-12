@@ -1,3 +1,8 @@
+import os
+os.environ["HF_HUB_OFFLINE"] = "1"
+os.environ["TRANSFORMERS_OFFLINE"] = "1"
+
+
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 tokenizer = AutoTokenizer.from_pretrained("HuggingFaceTB/SmolLM2-360M-Instruct")
@@ -13,5 +18,7 @@ inputs = tokenizer.apply_chat_template(
 	return_tensors="pt",
 ).to(model.device)
 
-outputs = model.generate(**inputs, max_new_tokens=256)
+outputs = model.generate(**inputs,
+						 max_new_tokens=256
+						)
 print(tokenizer.decode(outputs[0][inputs["input_ids"].shape[-1]:]))

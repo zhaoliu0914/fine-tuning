@@ -32,11 +32,14 @@ hf cache rm model/google/gemma-3-270m-it             # actually remove it
 # vllm for development
 pip install vllm
 
+
+
 # set up dependencies
 pip install torch
 # torch without GPU
 pip install torch --index-url https://download.pytorch.org/whl/cpu
 
+pip install huggingface_hub==0.36.2
 pip install "transformers==4.46.3" "trl==0.12.2" "peft==0.13.2" "accelerate==1.1.1" "datasets==3.1.0" "numpy==1.26.4" "pyarrow==15.0.2" "pandas==2.2.3"
 
 
